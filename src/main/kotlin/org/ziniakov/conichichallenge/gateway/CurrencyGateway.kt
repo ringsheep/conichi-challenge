@@ -5,7 +5,7 @@ import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
-import org.ziniakov.conichichallenge.dto.CurrencyRatesResponse
+import org.ziniakov.conichichallenge.dto.externalApi.CurrencyRatesResponse
 
 @FeignClient(name = "currency-api", url = "{currency-api.url}")
 interface CurrencyGateway {

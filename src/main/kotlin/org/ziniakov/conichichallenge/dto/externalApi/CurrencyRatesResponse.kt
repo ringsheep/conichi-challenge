@@ -1,4 +1,4 @@
-package org.ziniakov.conichichallenge.dto
+package org.ziniakov.conichichallenge.dto.externalApi
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

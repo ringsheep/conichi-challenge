@@ -13,7 +13,6 @@ class CurrencyService(
         private val currencyGateway: CurrencyGateway,
         private val currencyApiProperties: CurrencyApiProperties
 ) {
-
     fun convert(sourceAmount: Amount, targetCurrencyCode: String): Amount {
         val rates = currencyGateway.getUsdRates(
                 currencyApiProperties.apiKey,

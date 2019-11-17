@@ -10,7 +10,7 @@ import org.ziniakov.conichichallenge.service.CurrencyService
 class CurrencyController(
         private val currencyService: CurrencyService
 ) {
-    @RequestMapping(value = ["/convert"],method = [RequestMethod.GET])
+    @RequestMapping(value = ["/convert"], method = [RequestMethod.GET])
     fun convert(sourceAmount: Amount, targetCurrencyCode: String): Amount =
             currencyService.convert(sourceAmount, targetCurrencyCode)
 }
