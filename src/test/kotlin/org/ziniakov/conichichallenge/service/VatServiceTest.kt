@@ -17,7 +17,6 @@ internal class VatServiceTest {
         Assertions.assertThat(result).isEqualTo(VatResponse(countryCode = "DE"))
     }
 
-
     @Test
     fun should_not_validate_incorrect_vat_code() {
         assertThrows<Exception> {

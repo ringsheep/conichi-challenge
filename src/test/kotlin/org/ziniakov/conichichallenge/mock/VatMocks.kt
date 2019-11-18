@@ -21,6 +21,6 @@ val vatGateway = mock<VatGateway> {
 }
 
 val vatProperties = VatApiProperties().apply {
-    apiKey = apiKey
+    apiKey = "apiKey"
     url = "https://example.com"
 }

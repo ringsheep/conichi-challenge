@@ -18,6 +18,13 @@ internal class CurrencyServiceTest {
     }
 
     @Test
+    fun should_convert_zero_amount() {
+        val result = service.convert(sourceAmount = Amount(value = 0.00, currencyCode = "RUB"), targetCurrencyCode = "EUR")
+
+        assertThat(result).isEqualTo(Amount(value = 0.00, currencyCode = "EUR"))
+    }
+
+    @Test
     fun should_not_convert_incorrect_source_and_target_currency() {
         assertThrows<Exception> {
             service.convert(sourceAmount = Amount(value = 100.00, currencyCode = "ABC"), targetCurrencyCode = "DEF")

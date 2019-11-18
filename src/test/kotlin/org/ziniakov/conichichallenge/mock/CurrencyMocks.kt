@@ -17,6 +17,6 @@ val currencyGateway = mock<CurrencyGateway> {
 }
 
 val currencyProperties = CurrencyApiProperties().apply {
-    apiKey = apiKey
+    apiKey = "apiKey"
     url = "https://example.com"
 }
