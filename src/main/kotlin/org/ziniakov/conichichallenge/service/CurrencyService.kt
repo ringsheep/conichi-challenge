@@ -7,6 +7,7 @@ import org.ziniakov.conichichallenge.properties.CurrencyApiProperties
 import kotlin.math.round
 
 private const val DEFAULT_MINORY_UNITS = 100
+private const val USD_MNEMONIC = "USD"
 
 @Service
 class CurrencyService(
@@ -30,7 +31,7 @@ class CurrencyService(
             currencyCodes.joinToString (separator = ",")
 
     private fun getCurrencyUsdRateMinoryUnits(rates: Map<String, Double>, currencyCode: String): Double =
-            rates.getOrElse("USD$currencyCode") { throw Exception("Could not get rate from USD to $currencyCode") }
+            rates.getOrElse(USD_MNEMONIC + currencyCode) { throw Exception("Could not get rate from USD to $currencyCode") }
 }
 
 private fun Double.roundToCurrencyFormat(): Double = (round(this * DEFAULT_MINORY_UNITS) / DEFAULT_MINORY_UNITS)

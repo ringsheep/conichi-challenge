@@ -4,6 +4,7 @@ import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import org.ziniakov.conichichallenge.dto.VatResponse
 import org.ziniakov.conichichallenge.dto.externalApi.VatValidationRequest
 import org.ziniakov.conichichallenge.dto.externalApi.VatValidationResponse
@@ -16,6 +17,11 @@ internal class VatServiceTest {
                 VatValidationResponse(
                         countryCode = "DE",
                         isValid = true
+                )
+        on { validate(apiKey = "apiKey", request = VatValidationRequest("NN 111111111")) } doReturn
+                VatValidationResponse(
+                        countryCode = "NN",
+                        isValid = false
                 )
     }
 
@@ -31,5 +37,13 @@ internal class VatServiceTest {
         val result = service.validate(vatCode = "DE 260543043")
 
         Assertions.assertThat(result).isEqualTo(VatResponse(countryCode = "DE"))
+    }
+
+
+    @Test
+    fun should_not_validate_incorrect_vat_code() {
+        assertThrows<Exception> {
+            service.validate(vatCode = "NN 111111111")
+        }
     }
 }
