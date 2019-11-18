@@ -16,6 +16,6 @@ internal class DateServiceTest {
     fun should_return_current_date() {
         val result = service.getCurrentDate()
 
-        Assertions.assertThat(result).isEqualTo(Date(timestamp = 1560729600, formattedStringUtc = "17/06/19 00:00"))
+        Assertions.assertThat(result).isEqualTo(Date(timestamp = 1560729600, formattedStringUtc = "2019-06-17T00:00:00Z"))
     }
 }

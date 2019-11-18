@@ -2,8 +2,8 @@ spring:
   application.name: conichi-challenge
 
 currency-api:
-  url: http://apilayer.net/api/
+  url: http://apilayer.net/api
   apiKey: apiKey
 vat-api:
-  url: https://api.cloudmersive.com/validate/vat/
+  url: https://api.cloudmersive.com/validate/vat
   apiKey: apiKey

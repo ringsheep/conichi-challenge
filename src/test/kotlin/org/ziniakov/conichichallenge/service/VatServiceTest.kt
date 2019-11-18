@@ -5,16 +5,18 @@ import com.nhaarman.mockitokotlin2.mock
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.ziniakov.conichichallenge.dto.VatResponse
+import org.ziniakov.conichichallenge.dto.externalApi.VatValidationRequest
 import org.ziniakov.conichichallenge.dto.externalApi.VatValidationResponse
 import org.ziniakov.conichichallenge.gateway.VatGateway
 import org.ziniakov.conichichallenge.properties.VatApiProperties
 
 internal class VatServiceTest {
     private val gateway = mock<VatGateway> {
-        on { validate(apiKey = "apiKey", vatCode = "DE 260543043") } doReturn VatValidationResponse(
-                countryCode = "DE",
-                isValid = true
-        )
+        on { validate(apiKey = "apiKey", request = VatValidationRequest("DE 260543043")) } doReturn
+                VatValidationResponse(
+                        countryCode = "DE",
+                        isValid = true
+                )
     }
 
     private val properties = VatApiProperties().apply {
