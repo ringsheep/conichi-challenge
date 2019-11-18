@@ -34,7 +34,7 @@ curl -X GET 'http://localhost:8081/api/vat/validate?vatCode=DE%20260543043' -H '
 ## Requirements
 * JDK 8
 
-## TODOs and other stuff I lacked time for
+## TODOs and other stuff I lacked time for (but I'll come back soon!)
 * Externalize api keys injection through docker volume
 * Pass jar name to Dockerfile to avoid version hard-coding
 * Integration tests using WireMock

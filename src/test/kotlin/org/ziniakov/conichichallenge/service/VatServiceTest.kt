@@ -1,36 +1,14 @@
 package org.ziniakov.conichichallenge.service
 
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.ziniakov.conichichallenge.dto.VatResponse
-import org.ziniakov.conichichallenge.dto.externalApi.VatValidationRequest
-import org.ziniakov.conichichallenge.dto.externalApi.VatValidationResponse
-import org.ziniakov.conichichallenge.gateway.VatGateway
-import org.ziniakov.conichichallenge.properties.VatApiProperties
+import org.ziniakov.conichichallenge.mock.vatGateway
+import org.ziniakov.conichichallenge.mock.vatProperties
 
 internal class VatServiceTest {
-    private val gateway = mock<VatGateway> {
-        on { validate(apiKey = "apiKey", request = VatValidationRequest("DE 260543043")) } doReturn
-                VatValidationResponse(
-                        countryCode = "DE",
-                        isValid = true
-                )
-        on { validate(apiKey = "apiKey", request = VatValidationRequest("NN 111111111")) } doReturn
-                VatValidationResponse(
-                        countryCode = "NN",
-                        isValid = false
-                )
-    }
-
-    private val properties = VatApiProperties().apply {
-        apiKey = "apiKey"
-        url = "https://example.com"
-    }
-
-    private val service = VatService(gateway, properties)
+    private val service = VatService(vatGateway, vatProperties)
 
     @Test
     fun should_validate_correct_vat_code() {
